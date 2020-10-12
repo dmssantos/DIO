@@ -1,6 +1,7 @@
 const assert = require('assert'); 
 const Math = require('./math.js');
 const expect = require('chai').expect;
+const sinon = require('sinon');
 
 describe('Math class', function() {
     //hooks
@@ -19,7 +20,7 @@ describe('Math class', function() {
         });
     });
 
-    it.only('Multiply two numbers', function() {
+    it('Multiply two numbers', function() {
         const math = new Math();
         const obj = {
             name: 'David Santos'
@@ -30,5 +31,19 @@ describe('Math class', function() {
         };
         expect(obj).to.deep.equal(obj2);
     });
+
+    it.only('Call req with sim and index values', function() {
+        const req = {};
+        const res = {
+            load: sinon.spy()
+        };
+        const math = new Math();
+
+        math.printSum(req, res, 5, 5);
+
+        expect(res.load.calledOnce).to.be.true;
+        expect(res.load.args[0][0]).to.equal('index');
+        expect(res.load.args[0][1]).to.equal(10);
+    })
 });
 
