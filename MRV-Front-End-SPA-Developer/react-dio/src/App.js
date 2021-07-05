@@ -8,6 +8,7 @@ const App = () => {
         <Item />
         <Item />
         <Item />
+        <Item />
       </ul>
     </>
   )
