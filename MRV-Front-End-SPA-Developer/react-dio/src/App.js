@@ -1,5 +1,12 @@
-export default function App() {
-  return(
-    <h1>Hello World</h1>
+const App = () => {
+  return (
+    <>
+      <h1>Minha primeira aplicação com React</h1>
+      <ul>
+        
+      </ul>
+    </>
   )
 }
+
+export default App
