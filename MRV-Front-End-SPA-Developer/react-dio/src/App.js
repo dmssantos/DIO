@@ -5,9 +5,15 @@ const App = () => {
     <>
       <h1>Minha Primeira Aplicação React</h1>
       <ul>
-        <Item />
-        <Item />
-        <Item />
+        <Item>
+          tem 1
+        </Item>
+        <Item>
+          tem 2
+        </Item>
+        <Item>
+          tem 3
+        </Item>
       </ul>
     </>
   )
