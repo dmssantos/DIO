@@ -1,6 +1,6 @@
 import Item from './components/item'
 
-export default function App() {
+const App = () => {
   return (
     <>
       <h1>Minha Primeira Aplicação React</h1>
