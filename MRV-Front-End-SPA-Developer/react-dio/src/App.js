@@ -1,4 +1,5 @@
 import Item from './components/item'
+import Card from './components/cards'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           tem 3
         </Item>
       </ul>
+      <Card />
     </>
   )
 }
