@@ -1,11 +1,11 @@
 import './App.css';
-import Counter from '../Counter/Counter';
+import Ifoodcounter from '../Ifoodcounter/Ifoodcounter';
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
-      <Counter />
+      <h1>Ifood</h1>
+      <Ifoodcounter />
     </>
   );
 }
