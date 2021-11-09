@@ -57,7 +57,7 @@ function redirecione (usuario: IUsuário) {
   //redirecionar para area de usuario
 }
 */
-
+/*
 interface Cachorro {
   readonly nome: string,
   readonly idade: number,
@@ -80,3 +80,25 @@ class MeuCachorro implements CachorroSomenteLeitura {
 }
 
 const cao = new MeuCachorro('Apollo', 14);
+*/
+/*
+import $ from 'jquery';
+
+$.fn.extend({
+  novaFunção() {
+    console.log('Chamou nova função')
+  }
+})
+
+$('body').novaFunção();
+*/
+
+interface Pessoa {
+  nome: string;
+  idade: number;
+  nacionalidade: string;
+}
+
+interface Brasileiro extends Omit<Pessoa, 'nacionalidade'> {
+  
+}
