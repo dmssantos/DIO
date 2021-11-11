@@ -14,7 +14,7 @@ function World({ values }) {
   )
 
   const openPost = (id) => {
-    history.push(`/World/${id}`)
+    history.push(`/world/${id}`)
   }
 
   const renderPost = (post, index) => {
