@@ -14,7 +14,7 @@ function Post() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
-  const renderImg = ({ image, description }) => <img src={image.url} alt={description} width="75" />
+  const renderImg = ({ image, description }) => <img src={image.url} alt={description} width="75%" />
 
   const handleNews = useCallback((data) => {
     setNews(data[0]?.value)
@@ -59,16 +59,24 @@ function Post() {
   if (!post?.id) return null
 
   const { title, image, description, body, datePublished } = post
+
   return (
     <div>
+      <Link to="/">Back</Link>
+      <Actions post={post} subject={subject} />
       <Row gutter={[16, 16]}>
         <Col span={24} md={16}>
-          <p>datePublished</p>
+          <p>{datePublished}</p>
           <h1 dangerouslySetInnerHTML={createMarkup(title)} />
           {image && renderImg({image, description})}
           <p className="text" dangerouslySetInnerHTML={createMarkup(description)}></p>
           <hr />
-          <p className="text" dangerouslySetInnerHTML={createMarkup(description)}></p>
+          <p className="text" dangerouslySetInnerHTML={createMarkup(body)}></p>
+        </Col>
+        <Col span={24} md={8}>
+          <Row gutter={[16, 16]}>
+            {news?.value?.map(renderPost)}
+          </Row>
         </Col>
       </Row>
     </div>
