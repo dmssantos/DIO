@@ -1,11 +1,10 @@
-import { memo, useEffect, useCallback, useState } from 'react';
-import { useHistory, useParams, Link } from 'react-router-dom';
-import { Row, Col } from 'antd';
-import Api from '../api';
-import Actions from './components/Actions';
-import { createMarkup } from '../utils';
-import './style.css';
-
+import React, { memo, useEffect, useState, useCallback } from 'react'
+import { useHistory, useParams, Link } from 'react-router-dom'
+import { Row, Col } from 'antd'
+import Api from '../api'
+import Actions from './components/Actions'
+import { createMarkup } from '../utils'
+import './style.css'
 
 function Post() {
   const { id, subject } = useParams()
@@ -18,9 +17,10 @@ function Post() {
 
   const handleNews = useCallback((data) => {
     setNews(data[0]?.value)
-    setNews(data[1]?.value)
+    setPost(data[1]?.value)
     setLoading(false)
   }, [])
+
 
   useEffect(() => {
     setLoading(true)
@@ -60,6 +60,7 @@ function Post() {
 
   const { title, image, description, body, datePublished } = post
 
+
   return (
     <div>
       <Link to="/">Back</Link>
@@ -68,10 +69,10 @@ function Post() {
         <Col span={24} md={16}>
           <p>{datePublished}</p>
           <h1 dangerouslySetInnerHTML={createMarkup(title)} />
-          {image && renderImg({image, description})}
-          <p className="text" dangerouslySetInnerHTML={createMarkup(description)}></p>
+          {image && renderImg({ image, description })}
+          <p className="text" dangerouslySetInnerHTML={createMarkup(description)} />
           <hr />
-          <p className="text" dangerouslySetInnerHTML={createMarkup(body)}></p>
+          <p className="text" dangerouslySetInnerHTML={createMarkup(body)} />
         </Col>
         <Col span={24} md={8}>
           <Row gutter={[16, 16]}>

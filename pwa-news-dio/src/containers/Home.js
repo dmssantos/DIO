@@ -1,9 +1,9 @@
-import React, { memo, useEffect, useState } from 'react';
-import { Row, Col } from "antd";
-import Api from '../api';
-import Economy from './components/Economy';
-import Technology from './components/Technology';
-import World from './components/World';
+import React, { memo, useEffect, useState } from 'react'
+import { Row, Col } from 'antd'
+import Economy from './components/Economy'
+import Technology from './components/Technology'
+import World from './components/World'
+import Api from '../api'
 
 function Home() {
   const [news, setNews] = useState([])
@@ -46,11 +46,11 @@ function Home() {
       <Row gutter={[16, 16]}>
         <Col span={24}>
           <h2>Technology</h2>
-          <Technology values={news?.Technology} />
+          <Technology values={news?.technology} />
         </Col>
       </Row>
     </div>
   )
 }
 
-export default memo(Home);
+export default memo(Home)

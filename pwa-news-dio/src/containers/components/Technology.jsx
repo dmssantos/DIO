@@ -4,7 +4,7 @@ import { Row, Col } from 'antd'
 import { createMarkup } from '../../utils'
 import { useHistory } from 'react-router-dom'
 
-function World({ values }) {
+function Technology({ values }) {
   const history = useHistory()
 
   const renderImg = ({ image, description }) => (
@@ -14,22 +14,20 @@ function World({ values }) {
   )
 
   const openPost = (id) => {
-    history.push(`/world/${id}`)
+    history.push(`/technology/${id}`)
   }
 
   const renderPost = (post, index) => {
     const { title, image, description, id } = post
-    const isFirst = index === 0
-    const spanValue = isFirst ? 24 : 12
-
+    
     return (
-      <Col span={spanValue} md={6} key={`World-${index}`}>
+      <Col span={12} md={6} key={`technology-${index}`}>
         <article onClick={() => openPost(id)}>
-          <p>
+           <p>
             <strong dangerouslySetInnerHTML={createMarkup(title)} />
           </p>
           <p dangerouslySetInnerHTML={createMarkup(description)} />
-          {isFirst&&renderImg({image, description})}
+          {image.url && renderImg({ image, description })}
         </article>
       </Col>
     )
@@ -44,13 +42,13 @@ function World({ values }) {
   )
 }
 
-World.defaultProps = {
+Technology.defaultProps = {
   values: []
 }
 
-World.propTypes = {
+Technology.propTypes = {
   values: PropTypes.array.isRequired
 }
 
 
-export default memo(World)
+export default memo(Technology)
