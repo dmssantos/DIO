@@ -19,17 +19,25 @@ async function jwtAuthenticationMiddleware(req: Request, res: Response, next: Ne
       throw new ForbbidenError('Tipo de authenticação inválido');
     }
 
-    const tokenPayload = jwt.verify(token, 'my_secret_key');
+    try {
+      const tokenPayload = jwt.verify(token, 'my_secret_key');
 
-    if (typeof tokenPayload !== 'object' || !tokenPayload.sub) {
+      if (typeof tokenPayload !== 'object' || !tokenPayload.sub) {
+        throw new ForbbidenError('Token inválido');
+      }
+
+      const user = {
+        uuid: tokenPayload.sub,
+        username: tokenPayload.username
+      };
+
+      req.user = user;
+      next()
+
+    } catch (error) {
       throw new ForbbidenError('Token inválido');
     }
 
-    const user = { uuid: tokenPayload.sub, username: tokenPayload.username };
-
-    req.user = user;
-
-    next()
   } catch (error) {
     next(error)
   }

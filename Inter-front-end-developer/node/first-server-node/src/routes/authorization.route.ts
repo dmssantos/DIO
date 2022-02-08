@@ -7,18 +7,14 @@ import jwtAuthenticationMiddleware from "../middlewares/jwt-authentication.middl
 
 const authorizationRoute = Router();
 
-authorizationRoute.post('token/validate', jwtAuthenticationMiddleware, (req: Request, res: Response, next: NextFunction) => {
-  res.sendStatus(StatusCodes.OK)
-});
-
 authorizationRoute.post('/token', basicAuthenticationMiddleware, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = req.user;
 
-    if(!user) {
+    if (!user) {
       throw new ForbbidenError('Usuário não informado')
     }
-    
+
     const jwtPayload = { username: user.username }
     const jwtOptions = { subject: user?.uuid }
     const secretKey = 'my_secret_key'
@@ -28,7 +24,10 @@ authorizationRoute.post('/token', basicAuthenticationMiddleware, async (req: Req
   } catch (error) {
     next(error);
   }
+});
 
+authorizationRoute.post('token/validate', jwtAuthenticationMiddleware, (req: Request, res: Response, next: NextFunction) => {
+  res.sendStatus(StatusCodes.OK)
 });
 
 
